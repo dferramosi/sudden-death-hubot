@@ -43,6 +43,9 @@ module.exports = (robot) ->
   robot.respond /rockets add (\d*)/i, (msg) ->
     robot.brain.data.rockets.steamids.push msg.match[1]
 
+  robot.respond /rockets del (\d*)/i, (msg) ->
+    robot.brain.data.rockets.steamids.pop msg.match[1]
+
   robot.respond /rockets list/i, (msg) ->
     msg.send "SteamIDs: #{robot.brain.data.rockets.steamids.toString()}"
 
