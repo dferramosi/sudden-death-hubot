@@ -6,9 +6,9 @@
 # Configuration:
 #
 # Commands:
-#   hubot rocket list - lists SteamIDs
-#   hubot rocket add - add SteamID to check list
-#   rocket auth <STEAM_API_KEY> - Sets steam api key
+#   hubot rockets list - lists SteamIDs
+#   hubot rockets add <STEAMID> - add SteamID to check list
+#   rockets auth <STEAM_API_KEY> - Sets steam api key
 #
 # Notes:
 #   Emits and catches "rocket_event" every (interval) to poll steam api
@@ -34,7 +34,7 @@ module.exports = (robot) ->
    	  for player in data.response.players 
    	    playstring = "#{player.personaname+': '+player.gameextrainfo}"
    	    if playstring not in robot.brain.data.rockets.ignores
-   	      robot.send rocket_event.room,  playstring
+   	      robot.send rocket_event, playstring
           robot.brain.data.rockets.ignores.push playstring
    	      setTimeout () ->
             robot.brain.data.rockets.ignores.pop playstring
